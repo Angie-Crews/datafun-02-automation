@@ -29,3 +29,10 @@ git add .
 git commit -m "Add requirements.txt"
 git push -u origin main
 ```
+### 05 Create Virtual Environment
+In VS Code, right click on the project folder, choose open in integrated terminal
+To activate a virtual environment
+```shell
+py -m venv .venv
+```
+To deactivate, simply type deactivate in the powershell prompt

@@ -31,6 +31,7 @@ git push -u origin main
 ```
 ### 05 Create Virtual Environment
 In VS Code, right click on the project folder, choose open in integrated terminal
+
 To Create Virtual Environment
 
 ```shell

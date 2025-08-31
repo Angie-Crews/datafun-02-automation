@@ -8,7 +8,7 @@
 git clone https://github.com/Angie-Crews/datafun-02-automation
 ```
 
-### 03 Add gitignore and requirements.txt
+### 03 Create '.gitignore' and 'requirements.txt' and copy contents of each
 Task 1:  Create new '.gitignore' file in repo and copy contents from https://github.com/denisecase/pro-analytics-01/
 
 Task 2:  Create new 'requirements.txt' file in repo and copy contents from https://github.com/denisecase/pro-analytics-01/

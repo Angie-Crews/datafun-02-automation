@@ -35,4 +35,7 @@ To activate a virtual environment
 ```shell
 py -m venv .venv
 ```
-To deactivate, simply type deactivate in the powershell prompt
+To deactivate a virtual environment
+```shell
+deactivate
+```

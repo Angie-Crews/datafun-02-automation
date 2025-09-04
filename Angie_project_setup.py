@@ -1,205 +1,236 @@
 """
-File: utils_Angie-Crews.py
+File: dirbot_case.py
 
-Purpose: Reusable header/tagline module for analytics projects.
+Purpose: Automate the creation of project folders 
+(and demonstrate basic Python coding skills).
 
-Description:
-A short, first-week module to demonstrate key skills:
-- declare basic variables (bool, int, str, list)
-- compose a reusable f-string "tagline" (a formatted-string header block)
-- expose a function named get_tagline() that can be imported into other modules
-- run this file as a script via main() using the if __name__ == '__main__' pattern
+Hint: See the Textbook, Skill Drills, and GUIDES for code snippets to help complete this module.
 
-Author: Angie Crews
+Author: Denise Case
+
+TODO: Change the module name in this opening docstring to use your name instead of case. 
+TODO: Change the author in this opening docstring to your name or alias. 
+TODO: Remove each TODO after you complete it. 
 """
 
 #####################################
-# Import Modules
+# Import Modules at the Top
 #####################################
 
-# For a summary list of key modules that come pre-packaged with Python,
-# see the notes in the requirements.txt file (included in all projects).
+# Import from the Python Standard library
+import pathlib
+import sys      
 
-# Import modules from the Python Standard library
-import statistics
+# Import packages from requirements.txt
+import loguru   
 
-# Additional external packages must be listed in requirements.txt or pyproject.toml
-# and installed in the active .venv
+# Ensure project root is in sys.path for local imports
+sys.path.append(str(pathlib.Path(__file__).resolve().parent))
 
-# Import external packages
-import loguru  # Easy logging
-import pyttsx3  # type: ignore # Text-to-speech engine
+# Import local modules
+# TODO: Import your module in the line below instead
+import utils_case
 
 #####################################
-# Configure Simple Logger (better than print statements)
+# Configure Logger and Verify
 #####################################
 
 logger = loguru.logger
-logger.add(
-    "project.log",
-    level="INFO",
-    rotation="100 KB",
-    backtrace=False,
-    diagnose=False,
-    format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {name}:{line} | {message}",
-)
+logger.add("project.log", level="INFO", rotation="100 KB") 
 logger.info("Logger loaded.")
 
 #####################################
-# Declare Global Variables
+# Declare global variables
 #####################################
 
-# ----------------------------------
-# Define Boolean variables (True/False)
-# ----------------------------------
-is_accepting_clients: bool = True
-offers_remote_workshops: bool = True
-is_hiring: bool = False
+# Create a project path object for the root directory of the project.
+ROOT_DIR = pathlib.Path.cwd()
 
-
-# ----------------------------------
-# Define Integer variables
-# ----------------------------------
-current_year: int = 2025
-year_started: int = 2020
-number_of_employees: int = 25
-
-# ----------------------------------
-# Define String variables
-# ----------------------------------
-author: str = "Angie Crews"
-organization: str = "Crews Analytics"
-motto: str = "Data Empowered Decisions"
-location: str = "Springfield, MO"
-
-# ----------------------------------
-# Define List variables
-# ----------------------------------
-# example list of strings
-services: list[str] = ["Data Analysis", "Machine Learning", "Business Intelligence"]
-
-# example list of floating point numbers
-satisfaction_scores: list[float] = [4.8, 4.6, 4.9, 5.0, 4.7]
-office_locations: list[str] = ["Springfield, MO", "Overland Park, KS", "Lincoln, NE", "Sioux City, IA"]
-
-# ----------------------------------
-# Use built-in Python operators (such as - + * /)
-# and built-in Python functions (such as min, max, len, upper, lower, etc.)
-# ----------------------------------
-years_active: int = current_year - year_started
-min_score: float = min(satisfaction_scores)
-max_score: float = max(satisfaction_scores)
-count_of_services: int = len(services)
-count_of_scores: int = len(satisfaction_scores)
-count_of_locations: int = len(office_locations)
-
-# ----------------------------------
-# Use the built-in statistics module functions (such as mean, stdev, etc.)
-# ----------------------------------
-mean_score: float = statistics.mean(satisfaction_scores)
-stdev_score: float = statistics.stdev(satisfaction_scores)
-
-# ----------------------------------
-# Compose a reusable formatted string (f-string) using triple quotes
-# ----------------------------------
-byline: str = f"""
-**********************************************************
-{organization} — Project Header
-**********************************************************
-Author:                     {author}
-Motto:                      {motto}
-Years Active:               {years_active}
-Accepting New Clients?:     {is_accepting_clients}
-Currently Hiring?:          {is_hiring}
-Current Number of Employees:{number_of_employees}
-Number of Offices:          {count_of_locations}
-Office Locations:           {office_locations}
-Remote Workshops?:          {offers_remote_workshops}
-Services:                   {services}
-Client Satisfaction Scores: {satisfaction_scores}
-Minimum Satisfaction Score: {min_score}
-Maximum Satisfaction Score: {max_score}
-Mean Satisfaction Score:    {mean_score:.2f}
-     Standard Deviation:    {stdev_score:.2f}
-**********************************************************
-"""
+REGIONS = [
+    "North America", 
+    "South America", 
+    "Europe", 
+    "Asia", 
+    "Africa", 
+    "Oceania", 
+    "Middle East"
+]
 
 #####################################
-# Define Global Functions
+# Define Function 1. For item in Range: 
+# Create a function to generate folders for a given range (e.g., years).
+# Pass in an int for the first year
+# Pass in an int for the last year
 #####################################
 
+def create_folders_for_range(start_year: int, end_year: int) -> None:
+    '''
+    Create folders for a given range of years.
 
-def get_byline() -> str:
-    """
-    Return the reusable byline/tagline string.
-    """
-    return byline
+    Arguments:
+    start_year -- The starting year of the range (inclusive).
+    end_year -- The ending year of the range (inclusive).
+    '''
+
+    # Log function name and parameters
+    logger.info("FUNCTION: create_folders_for_range()")
+    logger.info(f"PARAMETERS: start_year = {start_year}, end_year = {end_year}")
+
+    # TODO: Loop through the years from start_year to end_year (inclusive)
+    # TODO: For each year, create a folder using ROOT_DIR / str(year)
+    # TODO: Log a message each time a folder is created
+    # TODO: Use .mkdir(exist_ok=True) so the program doesn't crash if the folder already exists
+
+    # Example starter structure:
+    # for year in range(start_year, end_year + 1):
+    #     year_path = ROOT_DIR / str(year)
+    #     year_path.mkdir(exist_ok=True)
+    #     logger.info(f"Created folder: {year_path}")
 
 
-def read_byline_aloud() -> None:
-    """
-    Use text-to-speech to read the byline aloud.
-    """
-    engine = pyttsx3.init()
-    if engine is not None:
-        engine.say(str(get_byline()))
-        engine.runAndWait()
+  
+#####################################
+# Define Function 2. For Item in List: 
+# Create folders from a list of names.
+# Pass in a list of folder names 
+# After everything else is working, 
+# add options to force lowercase and remove spaces
+#####################################
+
+def create_folders_from_list(folder_list: list) -> None:
+    '''
+    Create folders based on a list of folder names.
+    
+    Arguments:
+    folder_list -- A list of strings representing folder names.
+    '''
+
+    logger.info("FUNCTION: create_folders_from_list()")
+    logger.info(f"PARAMETER: folder_list = {folder_list}")
+
+    # TODO: Loop through the list of folder names
+    # TODO: For each name, create a folder using ROOT_DIR / name
+    # TODO: Log a message each time a folder is created
+
+    pass
+
+
+  
+#####################################
+# Define Function 3. List Comprehension: 
+# Create a function to create prefixed folders by transforming a list of names 
+# and combining each with a prefix (e.g., "output-").
+# Pass in a list of folder names
+# Pass in a prefix (e.g. 'output-') to add to each
+#####################################
+
+def create_prefixed_folders_using_list_comprehension(folder_list: list, prefix: str) -> None:
+    '''
+    Create folders by adding a prefix to each item in a list 
+    using a concise form of a for loop called a list comprehension.
+
+    Arguments:
+    folder_list -- A list of strings (e.g., ['csv', 'excel']).
+    prefix -- A string to prefix each name (e.g., 'output-').
+    '''
+
+    logger.info("FUNCTION: create_prefixed_folders()")
+    logger.info(f"PARAMETERS: folder_list = {folder_list}, prefix = {prefix}")
+
+    # TODO: Implement this function professionally and remove the temporary pass.
+    # TODO: Use a list comprehension to create the folder names.
+    pass
+
+  
+
+#####################################
+# Define Function 4. While Loop: 
+# Write a function to create folders periodically 
+# (e.g., one folder every 5 seconds).
+# Pass in the wait time in seconds
+#####################################
+
+def create_folders_periodically(duration_seconds: int) -> None:
+    '''
+    Create folders periodically over time.
+
+    Arguments:
+    duration_seconds -- The number of seconds to wait between folder creations.
+    '''    
+    logger.info("FUNCTION: create_folders_periodically()")
+    logger.info(f"PARAMETER: duration_seconds = {duration_seconds}")
+    
+    # TODO: Import time module from the Standard Library at the top if needed
+    # TODO: Use a counter or a list to control how many folders to create
+    # TODO: Wait between folder creations using time.sleep()
+    # TODO: Log each wait and creation
+    
+    pass
 
 
 #####################################
-# Define Function main() function for this module.
+# Define Function 5. For Item in List: 
+# Create folders from a list of names.
+# Pass in a list of folder names 
+# Add options to force lowercase AND remove spaces
 #####################################
 
+def create_standardized_folders(folder_list: list, to_lowercase: bool = False, remove_spaces: bool = False) -> None:
+    '''
+    Create folders from a list of names with options to standardize names.
+
+    Arguments:
+    folder_list -- A list of strings representing folder names.
+    to_lowercase -- If True, convert names to lowercase.
+    remove_spaces -- If True, remove spaces from names.
+    '''
+
+    logger.info("FUNCTION: create_standardized_folders()")
+    logger.info(f"PARAMETERS: folder_list = {folder_list}, to_lowercase = {to_lowercase}, remove_spaces = {remove_spaces}")
+
+    pass
+  
+#####################################
+# Define a main() function for this module.
+#####################################
 
 def main() -> None:
-    """
-    Use this main() function to test this module when
-    running it as a script.
-    """
+    ''' Main function to demonstrate module capabilities. '''
 
-    loguru.logger.info("STARTING main()..")
-    loguru.logger.info("Byline:\n" + get_byline())
+    logger.info("#####################################")
+    logger.info("# Starting execution of main()")
+    logger.info("#####################################\n")
 
-    try:
-        # TODO: Uncomment next line if you want audio feedback (use CTRL+C to stop)
-        # read_byline_aloud()
-        pass
-    except KeyboardInterrupt:
-        logger.info("Speech interrupted by user (Ctrl+C).")
-    except Exception as ex:
-        logger.warning(f"Text-to-speech skipped: {ex}")
+    # TODO: Change this to use your module and your get_byline() function instead
+    logger.info(f"Byline: {utils_case.get_byline()}")
 
-    loguru.logger.info("This module is organized like all Python modules.")
-    loguru.logger.info("We write professional Python from the start.")
-    loguru.logger.info("END main()...")
+    # Call function 1 to create folders for a range (e.g. years)
+    create_folders_for_range(start_year=2020, end_year=2023)
+
+    # Call function 2 to create folders given a list
+    folder_names = ['data-csv', 'data-excel', 'data-json']
+    create_folders_from_list(folder_names)
+
+    # Call function 3 to create folders using list comprehension
+    folder_names = ['csv', 'excel', 'json']
+    prefix = 'output-'
+    create_prefixed_folders_using_list_comprehension(folder_names, prefix)
+
+    # Call function 4 to create folders periodically using while
+    duration_secs:int = 5  # duration in seconds
+    create_folders_periodically(duration_secs)
+
+    # Call function 5 to create standardized folders, no spaces, lowercase
+    create_standardized_folders(REGIONS, to_lowercase=True, remove_spaces=True)
+
+    logger.info("\n#####################################")
+    logger.info("# Completed execution of main()")
+    logger.info("#####################################")
 
 
 #####################################
 # Conditional Execution
 #####################################
 
-# If we are running this file as a script then call main()
-# and verify our code works as expected.
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
-
-
-""" 
-    More about functions:
-
-    - A function is a block of code that performs a task.
-    - We wrote a reusable function that returns our byline.
-    - Functions let us write code once and reuse it.
-    - Defining good functions is a valuable skill.
-    - Know what you want to name it, what information it needs to do its job,
-      and what it should return (if anything).
-    - Our byline function doesn't need any additional information passed in,
-        so there's nothing inside the parentheses.
-    - AI tools can help us write functions, but WE must specify what we want.
-    - Recommended: 
-        - Use `type hints` to indicate what kind of value (if any) the function returns.
-        - Use `type hints` to indicate what type of information each parameter should be.
-        - Use a docstring at the start to describe what the function does.
-    - Everything after the colon must be indented consistently (usually 4 spaces)
-"""

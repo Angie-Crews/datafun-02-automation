@@ -49,3 +49,10 @@ To deactivate a virtual environment
 ```shell
 deactivate
 ```
+### 06 Git Pull Before Changes
+Before making any changes to a project, ALWAYS pull the latest changes from the remote repository on GitHub. Keep both locations up-to-date and in sync.
+
+Pull Changes
+```shell
+git pull origin main
+```

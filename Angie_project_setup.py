@@ -76,7 +76,7 @@ def create_folders_for_range(start_year: int, end_year: int) -> None:
 
     for year in range(start_year, end_year + 1):
         year_path = ROOT_DIR / str(year)
-        logger.info(f"Created folder: {year_path}")
+        logger.info(f"datafun-02-automation created folder: {year_path}")
         year_path.mkdir(exist_ok=True)
 
 

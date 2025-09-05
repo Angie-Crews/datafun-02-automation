@@ -1,5 +1,5 @@
 """
-File: Angie_project_setup.py
+File: Angie-Crews_project_setup.py
 
 Purpose: Automate the creation of project folders 
 (and demonstrate basic Python coding skills).
@@ -29,7 +29,7 @@ sys.path.append(str(pathlib.Path(__file__).resolve().parent))
 
 # Import local modules
 # TODO: Import your module in the line below instead
-import utils_case
+import utils_Angie-Crews
 
 #####################################
 # Configure Logger and Verify

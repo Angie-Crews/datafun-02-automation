@@ -8,9 +8,6 @@ Hint: See the Textbook, Skill Drills, and GUIDES for code snippets to help compl
 
 Author: Angie Crews
 
-TODO: Change the module name in this opening docstring to use your name instead of case. 
-TODO: Change the author in this opening docstring to your name or alias. 
-TODO: Remove each TODO after you complete it. 
 """
 
 #####################################
@@ -28,7 +25,6 @@ import loguru
 sys.path.append(str(pathlib.Path(__file__).resolve().parent))
 
 # Import local modules
-# TODO: Import your module in the line below instead
 import utils_Angie_Crews
 
 #####################################
@@ -81,11 +77,10 @@ def create_folders_for_range(start_year: int, end_year: int) -> None:
     # TODO: Log a message each time a folder is created
     # TODO: Use .mkdir(exist_ok=True) so the program doesn't crash if the folder already exists
 
-    # Example starter structure:
-    # for year in range(start_year, end_year + 1):
-    #     year_path = ROOT_DIR / str(year)
-    #     year_path.mkdir(exist_ok=True)
-    #     logger.info(f"Created folder: {year_path}")
+    for year in range(start_year, end_year + 1):
+        year_path = ROOT_DIR / str(year)
+        year_path.mkdir(exist_ok=True)
+        logger.info(f"Created folder: {year_path}")
 
 
   

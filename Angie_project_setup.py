@@ -196,10 +196,10 @@ def create_standardized_folders(folder_list: list, to_lowercase: bool = False, r
             name = name.replace(" ", "_")
         folder_path = ROOT_DIR / name
         folder_path.mkdir(exist_ok=True)
-    logger.info(f"Created folder: {folder_path}")
+        logger.info(f"Created folder: {folder_path}")
     # Add .gitkeep to track empty directories in Git
-    gitkeep_file = folder_path / '.gitkeep'
-    gitkeep_file.touch(exist_ok=True)
+        gitkeep_file = folder_path / '.gitkeep'
+        gitkeep_file.touch(exist_ok=True)
 
   
 #####################################

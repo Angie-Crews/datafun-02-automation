@@ -41,7 +41,8 @@ logger.info("Logger loaded.")
 #####################################
 
 # Create a project path object for the root directory of the project.
-ROOT_DIR = pathlib.Path("datafun-02-automation").resolve().parent
+ROOT_DIR = pathlib.Path.cwd()
+
 
 REGIONS = [
     "North America", 
@@ -79,6 +80,7 @@ def create_folders_for_range(start_year: int, end_year: int) -> None:
         logger.info(f"datafun-02-automation created folder: {year_path}")
         year_path.mkdir(exist_ok=True)
 
+pass
 
   
 #####################################

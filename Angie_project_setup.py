@@ -74,13 +74,14 @@ def create_folders_for_range(start_year: int, end_year: int) -> None:
     logger.info("FUNCTION: create_folders_for_range()")
     logger.info(f"PARAMETERS: start_year = {start_year}, end_year = {end_year}")
 
-
     for year in range(start_year, end_year + 1):
         year_path = ROOT_DIR / str(year)
         logger.info(f"datafun-02-automation created folder: {year_path}")
         year_path.mkdir(exist_ok=True)
-
-pass
+        
+        # Add .gitkeep to track empty directories in Git
+        gitkeep_file = year_path / '.gitkeep'
+        gitkeep_file.touch(exist_ok=True)
 
   
 #####################################
@@ -106,7 +107,9 @@ def create_folders_from_list(folder_list: list) -> None:
         folder_path = ROOT_DIR / name
         folder_path.mkdir(exist_ok=True)
         logger.info(f"Created folder: {folder_path}")
-
+        # Add .gitkeep to track empty directories in Git
+        gitkeep_file = folder_path / '.gitkeep'
+        gitkeep_file.touch(exist_ok=True)
 
   
 #####################################
@@ -135,7 +138,9 @@ def create_prefixed_folders_using_list_comprehension(folder_list: list, prefix: 
     for folder_path in folder_names:
         folder_path.mkdir(exist_ok=True)
         logger.info(f"Created folder: {folder_path}")
-
+        # Add .gitkeep to track empty directories in Git
+        gitkeep_file = folder_path / '.gitkeep'
+        gitkeep_file.touch(exist_ok=True)
   
 
 #####################################
@@ -159,8 +164,10 @@ def create_folders_periodically(duration_seconds: int) -> None:
         folder_path = ROOT_DIR / f"periodic-folder-{i}"
         folder_path.mkdir(exist_ok=True)
         logger.info(f"Created folder: {folder_path}")
+        # Add .gitkeep to track empty directories in Git
+        gitkeep_file = folder_path / '.gitkeep'
+        gitkeep_file.touch(exist_ok=True)
         time.sleep(duration_seconds)
-
 
 #####################################
 # Define Function 5. For Item in List: 
@@ -189,9 +196,11 @@ def create_standardized_folders(folder_list: list, to_lowercase: bool = False, r
             name = name.replace(" ", "_")
         folder_path = ROOT_DIR / name
         folder_path.mkdir(exist_ok=True)
-        logger.info(f"Created folder: {folder_path}")
-
-    pass
+    logger.info(f"Created folder: {folder_path}")
+    # Add .gitkeep to track empty directories in Git
+    gitkeep_file = folder_path / '.gitkeep'
+    gitkeep_file.touch(exist_ok=True)
+pass
   
 #####################################
 # Define a main() function for this module.

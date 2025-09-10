@@ -42,7 +42,6 @@ logger.info("Logger loaded.")
 
 # Create a project path object for the root directory of the project.
 ROOT_DIR = pathlib.Path("datafun-02-automation").resolve().parent
-PROCESSED_DIR: str = "processed_data"
 
 REGIONS = [
     "North America", 

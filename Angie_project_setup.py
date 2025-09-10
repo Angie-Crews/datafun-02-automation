@@ -200,7 +200,7 @@ def create_standardized_folders(folder_list: list, to_lowercase: bool = False, r
     # Add .gitkeep to track empty directories in Git
     gitkeep_file = folder_path / '.gitkeep'
     gitkeep_file.touch(exist_ok=True)
-pass
+
   
 #####################################
 # Define a main() function for this module.
